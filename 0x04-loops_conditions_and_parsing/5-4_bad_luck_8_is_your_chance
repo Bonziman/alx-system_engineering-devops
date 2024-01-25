@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# 4 bad luck 8 good luck Best School all the time
+n=0
+while [ $n -lt 10 ]; do
+	if [ $n -eq 4 ]; then
+		echo "bad luck"
+	elif [ $n -eq 8 ]; then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((n++))
+done
