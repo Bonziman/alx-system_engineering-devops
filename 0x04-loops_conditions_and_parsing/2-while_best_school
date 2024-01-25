@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# display Best School 10 times using while loop
+n=0
+while [ $n -lt 10 ]; do
+	echo "Best School"
+	((n++))
+done
