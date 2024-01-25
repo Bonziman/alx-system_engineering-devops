@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# fizzbuzz challenge
+n=1
+while [ $n -lt 101 ]; do
+	if [ $((n % 3)) -eq 0 ] && [ $((n % 5)) -eq 0 ]; then
+		echo "FizzBuzz"
+	elif [ $((n % 3)) -eq 0 ]; then
+		echo "Fizz"
+	elif [ $((n % 5)) -eq 0 ]; then
+		echo "Buzz"
+	else
+		echo "$n"
+	fi
+	((n++))
+done
