@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# display content of the file /ets/passwd only usrname id and path to home dir
+
+while IFS=: read -r username _ uid _ _ home _; do
+	echo "$username:$uid:$home"
+done < "/etc/passwd"
