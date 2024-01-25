@@ -4,7 +4,7 @@ n=0
 while [ $n -lt 10 ]; do
 	echo "Best School"
 	((n++))
-	if [$n -eq 9 ]; then
+	if [ $n -eq 9 ]; then
 		echo -e "\nHi"
 	fi
 done
