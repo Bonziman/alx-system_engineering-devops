@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# display contenct of current directory in a list only what's after -
+current_directory=$(pwd)
+for file in $current_directory/*; do
+	if [ -f "$file" ]; then
+		filename=$(basename "$file")
+		part_after_dash=$(echo "$filename" | cut -d '-' -f 2-)
+		echo "$part_after_dash"
+	fi
+done
