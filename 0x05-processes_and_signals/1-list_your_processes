@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#script that displays all current proccesses
+echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
+ps aux --forest --no-headers
