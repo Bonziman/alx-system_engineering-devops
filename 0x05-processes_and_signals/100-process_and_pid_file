@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#complicated, i'll explain later
+touch  /var/run/myscript.pid
+echo "$$" > /var/run/myscript.pid
+terminate_signal_handler() {
+	rm  /var/run/myscript.pid
+	echo "I hate the kill command"
+	exit 0
+}
+trap 'terminate_signal_handler' SIGTERM
+quit_signal_handler() {
+	rm /var/run/myscript.pid
+	exit 0
+}
+trap 'quit_signal_handler' SIGQUIT
+int_signal_handler() {
+	echo "Y U no love me?!"
+	exit 0
+}
+trap 'int_signal_handler' SIGINT
+while true; do
+	echo "To infinity and beyond"
+done
