@@ -3,35 +3,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-
-/**
- * main - program entry point
- * Return: ntg
- */
-int main(void)
-{
-	int i;
-
-	for (i = 0; i < 5; ++i)
-	{
-		pid_t child_pid = fork();
-
-		if (child_pid == -1)
-		{
-			perror("Fork failed");
-			exit(EXIT_FAILURE);
-		}
-		if (child_pid > 0)
-		{
-			printf("Zombie process created, PID: %d\n", child_pid);
-		}
-		else
-		{
-			sleep(2);
-			exit(EXIT_SUCCESS);
-		}
-	}
-}
 /**
  * infinite_while - just an infinite loop
  * Return: ntg
@@ -43,4 +14,32 @@ int infinite_while(void)
 		sleep(1);
 	}
 	return (0);
+}
+
+
+/**
+ * main - program entry point
+ * Return: 0 always
+ */
+int main(void)
+{
+	pid_t pid;
+	char count = 0;
+
+	while (count < 5)
+	{
+		pid = fork();
+		if (pid > 0)
+		{
+			printf("Zombie process created, PID: %d\n", pid);
+			sleep(1);
+			count++;
+		}
+		else
+			exit(0);
+	}
+
+	infinite_while();
+
+	return (EXIT_SUCCESS);
 }
