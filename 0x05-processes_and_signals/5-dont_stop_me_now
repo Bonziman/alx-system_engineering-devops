@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#script that kills another script (4)
+kill 928
