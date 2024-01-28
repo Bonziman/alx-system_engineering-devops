@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#parse apache log file
+# display user ip and http status code
+awk '{print $1 " " $9}' apache-access.log
