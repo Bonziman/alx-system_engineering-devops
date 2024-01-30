@@ -2,4 +2,6 @@
 word = ARGV[0]
 pattern = /(School)/
 match = word.match(pattern)
-puts match[1]
+if match
+  puts match[1]
+end
