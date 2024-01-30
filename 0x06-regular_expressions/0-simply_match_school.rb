@@ -4,6 +4,4 @@ pattern = /(S+c+h+o+o+l)/
 match = word.match(pattern)
 if match
     puts match[1]
-else
-  puts
 end
