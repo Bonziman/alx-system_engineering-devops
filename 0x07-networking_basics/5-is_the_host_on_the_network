@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#ping an ip adress as an argument
+if [ "$#" -eq 1 ]; then
+	ip_adress="$1"
+	count=0
+	while [ $count -lt 5 ]; do
+		ping -c 1 "$ip_adress"
+		((count++))
+	done
+else
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+fi
