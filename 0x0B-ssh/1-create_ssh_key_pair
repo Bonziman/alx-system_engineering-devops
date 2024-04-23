@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 # Generate RSA key pair with specified parameters
 
-openssl genpkey -algorithm RSA -out school.pem -aes256 -pass pass:betty -pkeyopt rsa_keygen_bits:4096
-
-openssl rsa -pubout -in school.pem -out school.pub.pem
-
-
+ssh-keygen -t rsa -b 4096 -N "betty" -f school
