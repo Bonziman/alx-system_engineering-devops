@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Define the private key name and passphrase
+# Generate RSA key pair with specified parameters
 
-PRIVATE_KEY_NAME="school"
-PASSPHRASE="betty"
+openssl genpkey -algorithm RSA -out school.pem -aes256 -pass pass:betty -pkeyopt rsa_keygen_bits:4096
 
-ssh-keygen -t rsa -b 4096 -C "$PRIVATE_KEY_NAME" -N "$PASSPHRASE" -f ~/.ssh/$PRIVATE_KEY_NAME
+openssl rsa -pubout -in school.pem -out school.pub.pem
+
+
