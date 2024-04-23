@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Script to install Nginx on an ubuntu server
+
+sudo apt -y install nginx
+sudo systemctl start nginx
+sudo su
+cd /var/www/html
+touch index.html
+echo 'Hello World!' > index.html
