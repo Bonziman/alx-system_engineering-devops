@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#Script to connect to a remote server
 
 SERVER_IP='100.25.215.65'
 
