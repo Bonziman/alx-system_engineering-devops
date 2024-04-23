@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Define the private key name and passphrase
+
+PRIVATE_KEY_NAME="school"
+PASSPHRASE="betty"
+
+ssh-keygen -t rsa -b 4096 -C "$PRIVATE_KEY_NAME" -N "$PASSPHRASE" -f ~/.ssh/$PRIVATE_KEY_NAME
