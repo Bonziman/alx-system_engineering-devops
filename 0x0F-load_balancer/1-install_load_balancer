@@ -1,13 +1,34 @@
-#!/usr/bin/env bash
-#set up Haproxy to load balance requests for to servers
-sudo apt update
-sudo apt -y install haproxy
-echo 'frontend http_front
-        bind *:80
-        default_backend http_back
+#!/bin/bash
+#configure brand new server to load balance 2 servers
+# Check if script is being run as root
+if [[ $EUID -ne 0 ]]; then
+	    echo "Please run this script as root (using sudo)"
+	        exit 1
+fi
+
+# Update package repositories and install HAProxy
+apt update
+apt -y install haproxy
+
+# Configure HAProxy
+cat <<EOF >> /etc/haproxy/haproxy.cfg
+frontend http_front
+    bind *:80
+    default_backend http_back
 
 backend http_back
-        balance roundrobin
-        server web-01 100.25.215.65:80 check
-        server web-02 34.207.154.239:80 check' >> /etc/haproxy/haproxy.cfg
-sudo systemctl restart haproxy
+    balance roundrobin
+    server web-01 100.25.215.65:80 check
+    server web-02 34.207.154.239:80 check
+EOF
+
+# Restart HAProxy
+systemctl restart haproxy
+
+# Check HAProxy status
+if systemctl is-active --quiet haproxy; then
+	    echo "HAProxy has been successfully configured and restarted."
+    else
+	        echo "Failed to start HAProxy. Check the configuration and logs for errors."
+fi
+
