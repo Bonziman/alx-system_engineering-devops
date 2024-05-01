@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #configure brand new server to load balance 2 servers
 # Check if script is being run as root
 if [[ $EUID -ne 0 ]]; then
