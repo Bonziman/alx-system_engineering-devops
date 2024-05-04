@@ -23,7 +23,7 @@ display_subdomain_info() {
     fi
     
     # Display the information
-    echo "The subdomain $subdomain.$domain is a $record_type record and points to $destination"
+    echo "The subdomain $subdomain is a $record_type record and points to $destination"
 }
 
 # Main script logic
