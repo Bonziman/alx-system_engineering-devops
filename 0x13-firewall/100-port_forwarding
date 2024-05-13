@@ -1,1 +1,5 @@
+sudo ufw allow 8080/TCP
+sudo ufw allow 80/TCP
+sudo sed -i "/^\*filter/i \*nat\n:PREROUTING ACCEPT [0:0]\n-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80\nCOMMIT" /etc/ufw/before.rules
+sudo ufw disable
 sudo ufw enable
