@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Script to make nginx run as nginx user
+sed -i 's/^user .*;/user nginx nginx;/' /etc/nginx/nginx.conf
+sed -i 's/^listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
+service nginc restart
