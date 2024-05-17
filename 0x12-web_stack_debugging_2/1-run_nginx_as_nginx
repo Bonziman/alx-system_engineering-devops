@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 #Script to make nginx run as nginx user
+# Set the nginx user and group
 sed -i 's/^user .*;/user nginx nginx;/' /etc/nginx/nginx.conf
-sed -i 's/^listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
-service nginc restart
+
+# Configure Nginx to listen on all active IPs on port 8080
+sed -i 's/^listen\s*80;/listen 8080 default_server;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the changes
+service nginx restart
