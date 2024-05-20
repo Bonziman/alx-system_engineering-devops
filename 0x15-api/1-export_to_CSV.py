@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"Script to retrieve data from API and Export it into CSV file"
 from sys import argv
 import json
 import requests
