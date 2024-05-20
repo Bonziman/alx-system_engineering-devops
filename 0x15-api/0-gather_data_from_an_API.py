@@ -8,8 +8,8 @@ from sys import argv
 def main():
     usr_id = argv[1]
     usr_link = 'https://jsonplaceholder.typicode.com/users/{}'.format(usr_id)
-    todos_link = 'https://jsonplaceholder.typicode.com/\
-                  todos?userId={}'.format(usr_id)
+    todos_link = ('https://jsonplaceholder.typicode.com/todos?userId={}'
+                  .format(usr_id))
     usr_res = requests.get(usr_link)
     todos_res = requests.get(todos_link)
 
