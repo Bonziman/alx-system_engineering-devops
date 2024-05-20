@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 "Script to retrieve data from API and Export it into CSV file"
 from sys import argv
+import csv
 import json
 import requests
-import csv
 
 
 def main():
     usr_id = argv[1]
     user_link = f'https://jsonplaceholder.typicode.com/users/{usr_id}'
-    todos_link = (f'https://jsonplaceholder.typicode.com/\
-                     todos?userId={usr_id}')
+    todos_link = (
+        f'https://jsonplaceholder.typicode.com/'
+        f'todos?userId={usr_id}'
+    )
 
     try:
         user_res = requests.get(user_link)
@@ -26,7 +28,6 @@ def main():
         user_name = user_data['username']
 
         csv_file = f"{usr_id}.csv"
-        print(usr_id)
         with open('{}.csv'.format(usr_id), 'w') as csvfile:
             writer = csv.writer(csvfile,
                                 delimiter=',',
