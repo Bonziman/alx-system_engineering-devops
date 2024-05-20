@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 "Script to fetch a REST API and return informations in a certain way"
-from sys import argv
 import json
 import requests
-
+from sys import argv
 
 
 def main():
     usr_id = argv[1]
     usr_link = 'https://jsonplaceholder.typicode.com/users/{}'.format(usr_id)
-    todos_link = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(usr_id)
+    todos_link = 'https://jsonplaceholder.typicode.com/\
+                  todos?userId={}'.format(usr_id)
     usr_res = requests.get(usr_link)
     todos_res = requests.get(todos_link)
-    
+
     if usr_res.status_code != 200 or todos_res.status_code != 200:
         print("Error Fetching Data!")
         return
@@ -27,6 +27,7 @@ def main():
     for task in todos_data:
         if task['completed']:
             print(f"\t {task['title']}")
+
 
 if __name__ == "__main__":
     main()
