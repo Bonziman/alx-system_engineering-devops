@@ -5,6 +5,11 @@ import json
 
 
 def number_of_subscribers(subreddit):
+    """
+    Function to return the number of subscribers for a given subreddit
+    if the subredit does not exist, it returns 0
+    subredit: the subredit to to fetch
+    """
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
     headers = {'User-Agent': 'Mozilla/5.0'}
 
