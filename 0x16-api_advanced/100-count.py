@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This module provides a function to count the occurrences of words from a given word list
-in the titles of the hot posts of a subreddit.
+This module provides a function to count the occurrences of words from
+a given word list in the titles of the hot posts of a subreddit.
 """
 import requests
 from collections import Counter
@@ -29,7 +29,7 @@ def count_words(subreddit, word_list, after=None, word_count=None):
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'
     headers = {'User-Agent': 'Mozilla/5.0'}
     params = {'limit': 100, 'after': after}
-    
+
     try:
         response = requests.get(url, headers=headers, params=params, allow_redirects=False)
         
