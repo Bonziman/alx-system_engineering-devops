@@ -17,7 +17,7 @@ def count_words(subreddit, word_list, after=None, word_count=None):
         word_list (list): A list of words to count.
         after (str, optional): The 'after' parameter for pagination.
         Defaults to None.
-        word_count (Counter, optional): A Counter object to 
+        word_count (Counter, optional): A Counter object to
         store the word counts.
         Defaults to None.
 
