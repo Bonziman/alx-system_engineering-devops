@@ -5,7 +5,7 @@ import requests
 
 def top_ten(subreddit):
     """
-    Function that prints the first 10 hot posts listed for 
+    Function that prints the first 10 hot posts listed for
     a given subreddit
     subreddit: the given subreddit
     """
@@ -13,7 +13,7 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'Mozzila/5.0'}
 
     try:
-        response = requests.get(url, headers= headers, allow_redirects=False)
+        response = requests.get(url, headers=headers, allow_redirects=False)
 
         if response.status_code == 200:
             data = response.json()
