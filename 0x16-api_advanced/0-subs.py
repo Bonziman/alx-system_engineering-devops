@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Module that produces a function that returns number of subscribers"""
-import requests
 import json
+import requests
 
 
 def number_of_subscribers(subreddit):
