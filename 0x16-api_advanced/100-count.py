@@ -9,7 +9,8 @@ from collections import Counter
 
 def count_words(subreddit, word_list, after=None, word_count=None):
     """
-    Count the occurrences of words from a given word list in the titles of the hot posts of a subreddit.
+    Count the occurrences of words from a given word list in the titles
+    of the hot posts of a subreddit.
 
     Args:
         subreddit (str): The name of the subreddit.
@@ -32,20 +33,20 @@ def count_words(subreddit, word_list, after=None, word_count=None):
 
     try:
         response = requests.get(url, headers=headers, params=params, allow_redirects=False)
-        
+
         if response.status_code == 200:
             data = response.json()
             posts = data.get('data', {}).get('children', [])
-            
+
             if not posts and not word_count:
                 return
-            
+
             for post in posts:
                 title = post['data']['title'].lower()
                 for word in word_list:
                     word_lower = word.lower()
                     word_count[word_lower] += title.split().count(word_lower)
-            
+
             after = data.get('data', {}).get('after')
             if after:
                 count_words(subreddit, word_list, after, word_count)
