@@ -37,7 +37,6 @@ def count_words(subreddit, word_list, after=None, word_count=None):
             posts = data.get('data', {}).get('children', [])
             
             if not posts and not word_count:
-                print(None)
                 return
             
             for post in posts:
@@ -55,11 +54,11 @@ def count_words(subreddit, word_list, after=None, word_count=None):
                     if count > 0:
                         print(f'{word}: {count}')
                 if not sorted_word_count:
-                    print(None)
+                    return
         else:
-            print(None)
+            return
     except requests.RequestException:
-        print(None)
+        return
 
 
 
