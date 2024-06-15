@@ -1,21 +1,3 @@
 #!/usr/bin/env bash
 #script to reload Gunicorn in a graceful way.
-[[ "${EUID}" -ne 0 ]] && exit 1
-
-worker_pids=()
-while IFS= read -r pid; do
-	worker_pids+=("$pid")
-done < <(pgrep -f "gunicorn worker")
-
-sudo systemctl reload gunicorn
-
-timeout=60
-end_time=$((SECONDS + timeout))
-while [[ "${#worker_pids[@]}" -gt 0 && SECONDS -lt "$end_time" ]]; do
-	sleep 1
-	for pid in "${worker_pids[@]}"; do
-		if ! kill -0 "$pid" 2>/dev/null; then
-			worker_pids=("${worker_pids[@]/$pid}") 
-		fi
-	done
-done
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
