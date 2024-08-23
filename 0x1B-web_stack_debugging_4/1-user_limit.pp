@@ -1,4 +1,4 @@
-# Changes the limitations on the holberton user
+# Changes the  limitations on the holberton user
 exec { 'change-os-configuration-for-holberton-user':
   command => "bash -c \"sed -iE 's/^holberton hard nofile \
 5/holberton hard nofile 88888/' /etc/security/limits.conf; \
